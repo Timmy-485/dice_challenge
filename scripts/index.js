@@ -1,11 +1,12 @@
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min); 
+    return Math.floor(Math.random() * (max - min) + min);
 }
 
-let randomNumber1 = getRandomInt(1,7)
-let randomNumber2 = getRandomInt(1,7)
+let randomNumber1 = getRandomInt(1, 7)
+let randomNumber2 = getRandomInt(1, 7)
+let randoms = [randomNumber1, randomNumber2]
 
 
 let dice = [
@@ -17,23 +18,17 @@ let dice = [
     "images/dice6.png"
 ]
 
-let d1 = document.querySelector(".img1")
-d1.setAttribute("id", "leftDie");
-d1 = document.getElementById("leftDie")
-d1.src = dice[randomNumber1 - 1]
+let dieField = document.querySelectorAll("img");
 
-let d2 = document.querySelector(".img2")
-d2.setAttribute("id", "rightDie");
-d2 = document.getElementById("rightDie")
-d2.src = dice[randomNumber2 - 1]
+
+dieField[0].setAttribute("src", dice[randoms[0] - 1])
+dieField[1].setAttribute("src", dice[randoms[1] - 1])
 
 let header = document.querySelector("h1")
-if(randomNumber1 > randomNumber2){
+if (randomNumber1 > randomNumber2) {
     header.innerHTML = "Player 1 wins"
-}
-else if(randomNumber2 > randomNumber1){
+} else if (randomNumber2 > randomNumber1) {
     header.innerHTML = "Player 2 wins"
-}
-else {
+} else {
     header.innerHTML = "It's a draw"
 }
